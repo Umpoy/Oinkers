@@ -22,6 +22,8 @@ form.addEventListener('submit', (event) => {
             'content-type': 'application/json'
         }
     }).then(response => response.json()).then(createdOink => {
-        console.log(createdOink);
+        form.reset();
+        form.style.display = '';
+        loadingElement.style.display = 'none';
     });
 });
