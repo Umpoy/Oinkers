@@ -21,5 +21,7 @@ form.addEventListener('submit', (event) => {
         headers: {
             'content-type': 'application/json'
         }
+    }).then(response => response.json()).then(createdOink => {
+        console.log(createdOink);
     });
 });
