@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/oinks', (req, res) => {
+    oinks.find().then(oinks => {
+        res.json(oinks);
+    });
+})
+
 function isValidOink(oink) {
     return oink.name && oink.name.toString().trim() !== '' &&
         oink.content && oink.content.toString().trim() !== '';
