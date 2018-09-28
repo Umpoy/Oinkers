@@ -32,7 +32,8 @@ app.post('/oinks', (req, res) => {
         //insert into db
         const oink = {
             name: req.body.name.toString(),
-            content: req.body.content.toString()
+            content: req.body.content.toString(),
+            created: new Date()
         };
 
         oinks.insert(oink).then(createdOink => {
