@@ -53,3 +53,15 @@ function listAllOinks() {
             });
         });
 }
+
+function deleteOink() {
+    return fetch(API_URL, {
+        method: 'delete'
+    }).then(response =>
+        response.json().then(oink => {
+            console.log(oink);
+        })
+        );
+}
+
+deleteOink();

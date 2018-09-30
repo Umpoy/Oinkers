@@ -10,6 +10,8 @@ const oinks = db.get('oinks');
 app.use(cors());
 app.use(express.json());
 
+// oinks.remove();
+
 app.get('/', (req, res) => {
     res.json({
         message: 'hello world'
@@ -45,6 +47,10 @@ app.post('/oinks', (req, res) => {
             message: "Warning! Name and Content are required!"
         })
     }
+});
+
+app.get('/oinks', (req, res) => {
+
 })
 
 app.listen(3000, () => {
