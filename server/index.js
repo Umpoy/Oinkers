@@ -10,8 +10,6 @@ const oinks = db.get('oinks');
 app.use(cors());
 app.use(express.json());
 
-// oinks.remove();
-
 app.get('/', (req, res) => {
     res.json({
         message: 'hello world'
@@ -49,9 +47,11 @@ app.post('/oinks', (req, res) => {
     }
 });
 
-app.get('/oinks', (req, res) => {
+oinks.remove({ 'content': 'world' });
 
-})
+// app.get('/delete', (req, res) => {
+//     oinks.remove({ 'content': 'world' });
+// });
 
 app.listen(3000, () => {
     console.log('Listening on http://localhost:3000');
