@@ -39,6 +39,7 @@ app.post('/oinks', (req, res) => {
         oinks.insert(oink).then(createdOink => {
             res.json(createdOink);
         });
+        console.log('oink sent to db');
     } else {
         res.status(422);
         res.json({
@@ -47,11 +48,12 @@ app.post('/oinks', (req, res) => {
     }
 });
 
-oinks.remove({ 'content': 'world' });
+app.post('/delete', (req, res) => {
+    // oinks.remove({ 'content': 'world' });
+    oinks.remove({ _id: req.body.id });
+    // console.log('stuff happened', req.body.id);
 
-// app.get('/delete', (req, res) => {
-//     oinks.remove({ 'content': 'world' });
-// });
+});
 
 app.listen(3000, () => {
     console.log('Listening on http://localhost:3000');

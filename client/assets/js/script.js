@@ -3,6 +3,7 @@ const form = document.querySelector('.form');
 const loadingElement = document.querySelector('.loading');
 const oinksElement = document.querySelector('.oinks');
 const API_URL = 'http://localhost:3000/oinks';
+const API_URL_DELETE = "http://localhost:3000/delete";
 
 loadingElement.style.display = 'none';
 
@@ -46,22 +47,31 @@ function listAllOinks() {
                 contents.textContent = oink.content;
                 const date = document.createElement('small');
                 date.textContent = new Date(oink.created);
+                const userID = document.createElement('p');
+                userID.textContent = oink._id
                 div.appendChild(header);
                 div.appendChild(contents);
                 div.appendChild(date);
+                div.appendChild(userID);
                 oinksElement.appendChild(div);
+                userID.addEventListener('click', function () {
+                    console.log(this.textContent);
+                    deleteOink(this.textContent);
+                })
             });
         });
 }
 
-function deleteOink() {
-    return fetch(API_URL, {
-        method: 'delete'
-    }).then(response =>
-        response.json().then(oink => {
-            console.log(oink);
-        })
-        );
+function deleteOink(id) {
+    fetch(API_URL_DELETE, {
+        method: 'post',
+        body: JSON.stringify({ id }),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json()).then(createdOink => {
+        console.log(createdOink);
+    });
 }
 
-deleteOink();
+// deleteOink();
