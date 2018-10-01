@@ -34,6 +34,7 @@ form.addEventListener('submit', (event) => {
 });
 
 function listAllOinks() {
+    oinksElement.innerHTML = '';
     fetch(API_URL)
         .then(response => response.json())
         .then(oinks => {
