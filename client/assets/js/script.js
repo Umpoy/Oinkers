@@ -73,7 +73,4 @@ function deleteOink(id) {
     }).then(response => response.json()).then(deleteOink => {
         listAllOinks()
     });
-
 }
-
-// deleteOink();
