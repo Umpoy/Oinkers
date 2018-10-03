@@ -70,9 +70,10 @@ function deleteOink(id) {
         headers: {
             'content-type': 'application/json'
         }
-    }).then(response => response.json()).then(createdOink => {
-        console.log(createdOink);
+    }).then(response => response.json()).then(deleteOink => {
+        listAllOinks()
     });
+
 }
 
 // deleteOink();

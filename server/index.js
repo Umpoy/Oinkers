@@ -49,10 +49,10 @@ app.post('/oinks', (req, res) => {
 });
 
 app.post('/delete', (req, res) => {
-    // oinks.remove({ 'content': 'world' });
-    oinks.remove({ _id: req.body.id });
-    // console.log('stuff happened', req.body.id);
-
+    oinks.remove({ _id: req.body.id }).then(deletedOink => {
+        res.json(deletedOink);
+    });
+    console.log("oink removed from db");
 });
 
 app.listen(3000, () => {
