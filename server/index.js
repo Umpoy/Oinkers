@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const monk = require('monk');
 const Filter = require('bad-words');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 
@@ -28,6 +29,11 @@ function isValidOink(oink) {
     return oink.name && oink.name.toString().trim() !== '' &&
         oink.content && oink.content.toString().trim() !== '';
 }
+
+app.use(rateLimit({
+    windowMs: 30 * 1000, //can only submit every 30 seconds
+    max: 1
+}));
 
 app.post('/oinks', (req, res) => {
     if (isValidOink(req.body)) {
