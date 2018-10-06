@@ -65,4 +65,6 @@ app.post('/delete', (req, res) => {
 
 app.listen(3000, () => {
     console.log('Listening on http://localhost:3000');
-})
+});
+
+// oinks.update({ content: 'Hello WOrld' }, { $set: { content: "Hello World" } });

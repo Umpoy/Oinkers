@@ -1,9 +1,11 @@
 
 const form = document.querySelector('.form');
+const button = document.querySelector('button');
 const loadingElement = document.querySelector('.loading');
 const oinksElement = document.querySelector('.oinks');
 const API_URL = 'http://localhost:3000/oinks';
 const API_URL_DELETE = "http://localhost:3000/delete";
+
 
 loadingElement.style.display = 'none';
 
@@ -29,6 +31,8 @@ form.addEventListener('submit', (event) => {
         form.reset();
         form.style.display = '';
         listAllOinks();
+        // button.style.cursor = "not-allowed";
+        // setTimeout(() => button.style.cursor = "", 30000);
         loadingElement.style.display = 'none';
     });
 });
